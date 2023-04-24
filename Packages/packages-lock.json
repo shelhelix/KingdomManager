@@ -23,13 +23,6 @@
       },
       "hash": "2a59bf520c65b9ddcd4861eebdbcf1e49f75de8b"
     },
-    "com.ultrashel.gamecomponentattributes": {
-      "version": "https://github.com/shelhelix/GameComponentAttributes.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "e43724efe7f36c56feedda3072f87b446461e8c8"
-    },
     "com.unity.2d.animation": {
       "version": "7.0.9",
       "depth": 1,

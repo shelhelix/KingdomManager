@@ -19,5 +19,10 @@ namespace GameJamEntry.MainMenu.ScreenControl {
 			CanvasGroup.blocksRaycasts = false;
 			await CanvasGroup.DOFade(0, 0.3f);
 		}
+
+		public void InstantHide() {
+			CanvasGroup.blocksRaycasts = false;
+			CanvasGroup.alpha          = 0;
+		}
 	}
 }

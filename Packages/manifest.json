@@ -3,7 +3,6 @@
     "com.cysharp.unitask": "2.3.3",
     "com.dbrizov.naughtyattributes": "https://github.com/dbrizov/NaughtyAttributes.git#upm",
     "com.ultrashel.asynctimer": "https://github.com/shelhelix/AsyncTimer.git",
-    "com.ultrashel.gamecomponentattributes": "https://github.com/shelhelix/GameComponentAttributes.git",
     "com.unity.collab-proxy": "2.0.1",
     "com.unity.feature.2d": "1.0.0",
     "com.unity.ide.rider": "3.0.18",

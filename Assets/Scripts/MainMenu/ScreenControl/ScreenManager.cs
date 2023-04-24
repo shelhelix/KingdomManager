@@ -36,8 +36,7 @@ namespace GameJamEntry.MainMenu.ScreenControl {
 
 		void FirstInit(BaseScreen screen) {
 			screen.gameObject.SetActive(true);
-			screen.CanvasGroup.alpha          = 0;
-			screen.CanvasGroup.blocksRaycasts = false;
+			screen.InstantHide();
 		}
 	}
 }
