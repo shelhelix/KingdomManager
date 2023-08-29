@@ -23,6 +23,13 @@
       },
       "hash": "2a59bf520c65b9ddcd4861eebdbcf1e49f75de8b"
     },
+    "com.ultrashel.gamecomponentattributes": {
+      "version": "https://github.com/shelhelix/GameComponentAttributes.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "3bdaaf4e860e6c4c00e8a36737876c2c89ba3540"
+    },
     "com.unity.2d.animation": {
       "version": "9.0.3",
       "depth": 1,
@@ -176,22 +183,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.ide.visualstudio": {
-      "version": "2.0.18",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.test-framework": "1.1.9"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.ide.vscode": {
-      "version": "1.2.5",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.mathematics": {
       "version": "1.2.6",
       "depth": 1,
@@ -312,7 +303,7 @@
       "url": "https://packages.unity.com"
     },
     "jp.hadashikick.vcontainer": {
-      "version": "1.13.1",
+      "version": "1.13.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {
