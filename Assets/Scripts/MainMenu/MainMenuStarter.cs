@@ -1,32 +1,19 @@
-﻿using GameComponentAttributes.Attributes;
-using GameJamEntry.General;
-using GameJamEntry.MainMenu.SceneLoading;
-using GameJamEntry.MainMenu.SceneLoading.Transitions;
-using GameJamEntry.MainMenu.ScreenControl;
+﻿using System.Collections.Generic;
+using GameComponentAttributes.Attributes;
+using GameJamEntry.Global;
 using GameJamEntry.MainMenu.UI;
 using UnityEngine;
+using VContainer;
 
-namespace GameJamEntry.MainMenu {
+namespace GameJamEntry.Gameplay {
+
 	public class MainMenuStarter : MonoBehaviour {
-		[NotNullReference] [SerializeField] ScreenManager ScreenManager;
-		[NotNullReference] [SerializeField] SoundHelper   SoundHelper;
+		[NotNullReference] [SerializeField] List<AudioClip> Bgms;
 
-		SceneLoader _sceneLoader;
-
-		ScreenHelper _screenHelper;
-
-		SystemSettingsController SettingsController => GameState.Instance.SystemSettingsController;
-
-		protected void Start() {
-			_sceneLoader  = new SceneLoader(FadeSceneTransition.Instance);
-			_screenHelper = new ScreenHelper(ScreenManager, SettingsController, _sceneLoader);
-			ScreenManager.Init();
-			SoundHelper.Init(SettingsController);
-			_screenHelper.ShowMainMenuScreen();
-		}
-
-		protected void OnDestroy() {
-			SoundHelper.Deinit();
+		[Inject]
+		public void Init(MainMenuScreenHelper mainMenuScreenManager, BgmManager bgmManager) {
+			mainMenuScreenManager.ShowMainMenuScreen();
+			bgmManager.PlayBgms(Bgms);
 		}
 	}
 }

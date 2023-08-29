@@ -16,7 +16,6 @@ namespace GameJamEntry.Gameplay.Zones {
 		[NotNullReference] [SerializeField] SpriteRenderer FightIcon;
 		[NotNullReference] [SerializeField] SpriteRenderer BaseTile;
 		[NotNullReference] [SerializeField] TMP_Text       ManaText;
-		ManaManager                                        _manaManager;
 		ManaTransferWindow                                 _manaTransferWindow;
 
 		TurnManager    _turnManager;
@@ -42,7 +41,6 @@ namespace GameJamEntry.Gameplay.Zones {
 			manaManager.CurrentMana.OnValueChanged += OnManaChanged;
 			_zoneController                        =  zoneController;
 			_manaTransferWindow                    =  manaTransferWindow;
-			_manaManager                           =  manaManager;
 			_turnManager                           =  turnManager;
 			RefreshView();
 		}

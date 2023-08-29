@@ -1,4 +1,4 @@
-﻿using GameJamEntry.MainMenu.ScreenControl;
+﻿using Com.Shelinc.FullscreenCanvasController;
 using UnityEngine;
 using VContainer;
 

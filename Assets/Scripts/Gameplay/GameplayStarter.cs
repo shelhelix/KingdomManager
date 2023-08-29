@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using Com.Shelinc.FullscreenCanvasController;
 using GameJamEntry.Gameplay.UI;
 using GameJamEntry.Gameplay.Zones;
-using GameJamEntry.MainMenu.ScreenControl;
 using VContainer;
 using VContainer.Unity;
 

@@ -1,7 +1,7 @@
 ﻿using DG.Tweening;
 using GameComponentAttributes.Attributes;
 using GameJamEntry.Gameplay.Zones;
-using GameJamEntry.Utils;
+using GameJamEntry.Utils.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,10 +11,10 @@ namespace GameJamEntry.Gameplay.UI {
 		const int ManaTransferDelta = 10;
 
 		[NotNullReference] [SerializeField] TMP_InputField ManaAmountText;
-		[NotNullReference] [SerializeField] Button         MinusButton;
-		[NotNullReference] [SerializeField] Button         PlusButton;
-		[NotNullReference] [SerializeField] Button         SendManaToZoneButton;
-		[NotNullReference] [SerializeField] Button         ExitButton;
+		[NotNullReference] [SerializeField] ButtonWrapper  MinusButton;
+		[NotNullReference] [SerializeField] ButtonWrapper  PlusButton;
+		[NotNullReference] [SerializeField] ButtonWrapper  SendManaToZoneButton;
+		[NotNullReference] [SerializeField] ButtonWrapper  ExitButton;
 		[NotNullReference] [SerializeField] Image          ClickBlockImage;
 
 		[NotNullReference] [SerializeField] Transform Root;
@@ -87,9 +87,9 @@ namespace GameJamEntry.Gameplay.UI {
 		}
 
 		void UpdateManaTransferView() {
-			MinusButton.interactable          = _manaToTransfer > 0;
-			PlusButton.interactable           = _manaToTransfer < _manaManager.CurrentMana.Value;
-			SendManaToZoneButton.interactable = (_manaToTransfer <= _manaManager.CurrentMana.Value) && (_manaToTransfer >= 0);
+			MinusButton.Interactable          = _manaToTransfer > 0;
+			PlusButton.Interactable           = _manaToTransfer < _manaManager.CurrentMana.Value;
+			SendManaToZoneButton.Interactable = (_manaToTransfer <= _manaManager.CurrentMana.Value) && (_manaToTransfer >= 0);
 			ManaAmountText.text               = _manaToTransfer.ToString();
 		}
 

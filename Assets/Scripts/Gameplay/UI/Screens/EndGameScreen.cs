@@ -1,5 +1,5 @@
-﻿using GameComponentAttributes.Attributes;
-using GameJamEntry.MainMenu.ScreenControl;
+﻿using Com.Shelinc.FullscreenCanvasController;
+using GameComponentAttributes.Attributes;
 using UnityEngine;
 
 namespace GameJamEntry.Gameplay.UI {

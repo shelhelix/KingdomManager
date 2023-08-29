@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
+using Com.Shelinc.FullscreenCanvasController;
+using Com.Shelinc.SceneTransitionEffects;
+using Com.Shelinc.SceneTransitionEffects.Transitions.Implementations;
 using GameComponentAttributes.Attributes;
 using GameJamEntry.Gameplay.UI;
 using GameJamEntry.Gameplay.Zones;
 using GameJamEntry.Gameplay.Zones.RandomEncounters;
-using GameJamEntry.MainMenu.SceneLoading;
-using GameJamEntry.MainMenu.SceneLoading.Transitions;
-using GameJamEntry.MainMenu.ScreenControl;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
