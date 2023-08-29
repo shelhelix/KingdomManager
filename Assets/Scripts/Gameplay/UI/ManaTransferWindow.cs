@@ -7,38 +7,37 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace GameJamEntry.Gameplay.UI {
-	
 	public class ManaTransferWindow : MonoBehaviour {
 		const int ManaTransferDelta = 10;
-		
+
 		[NotNullReference] [SerializeField] TMP_InputField ManaAmountText;
 		[NotNullReference] [SerializeField] Button         MinusButton;
 		[NotNullReference] [SerializeField] Button         PlusButton;
 		[NotNullReference] [SerializeField] Button         SendManaToZoneButton;
 		[NotNullReference] [SerializeField] Button         ExitButton;
 		[NotNullReference] [SerializeField] Image          ClickBlockImage;
-		
+
 		[NotNullReference] [SerializeField] Transform Root;
 		[NotNullReference] [SerializeField] Transform ScreenCenterPoint;
 		[NotNullReference] [SerializeField] Transform HidePoint;
 		[SerializeField]                    float     AnimationDuration = 0.4f;
-		
-		Sequence _runningSequence;
+
+		string      _currentReceivingZoneId;
+		ManaManager _manaManager;
 
 		int _manaToTransfer;
 
+		Sequence _runningSequence;
+
 		ZoneController _zoneController;
-		ManaManager    _manaManager;
-		
-		string _currentReceivingZoneId;
-		
+
 		public void Init(ZoneController zoneController, ManaManager manaManager) {
 			_zoneController = zoneController;
 			_manaManager    = manaManager;
 			gameObject.SetActive(true);
 			HideImmediately();
 		}
-		
+
 		public void Show(string receivingZoneId) {
 			_currentReceivingZoneId = receivingZoneId;
 			ManaAmountText.onValueChanged.RemoveAllListeners();
@@ -56,7 +55,7 @@ namespace GameJamEntry.Gameplay.UI {
 		}
 
 		void HideImmediately() {
-			Root.position      = HidePoint.position;
+			Root.position           = HidePoint.position;
 			ClickBlockImage.enabled = false;
 			ClickBlockImage.color   = new Color(0, 0, 0, 0);
 		}
@@ -72,12 +71,12 @@ namespace GameJamEntry.Gameplay.UI {
 		}
 
 		void ChangeManaAmountToTransfer(int delta) {
-			_manaToTransfer     = Mathf.Clamp(_manaToTransfer + delta, 0, _manaManager.CurrentMana.Value);
+			_manaToTransfer = Mathf.Clamp(_manaToTransfer + delta, 0, _manaManager.CurrentMana.Value);
 			UpdateManaTransferView();
 		}
 
 		void OnValueChanged(string value) {
-			if (!int.TryParse(value, out var manaAmount)) {
+			if ( !int.TryParse(value, out var manaAmount) ) {
 				return;
 			}
 			if ( manaAmount == _manaToTransfer ) {
@@ -101,6 +100,6 @@ namespace GameJamEntry.Gameplay.UI {
 				.Append(Root.DOMove(point, AnimationDuration))
 				.Join(ClickBlockImage.DOFade(endFadeValue, AnimationDuration));
 			_runningSequence.onComplete += () => ClickBlockImage.enabled = enabledOnFinish;
-		} 
+		}
 	}
 }

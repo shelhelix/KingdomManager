@@ -5,7 +5,7 @@ using VContainer;
 namespace GameJamEntry.Gameplay.UI {
 	public class GameplayUIWatcher : MonoBehaviour {
 		ScreenManager _screenManager;
-		
+
 		[Inject]
 		public void Init(GameplayGoalWatcher watcher, ScreenManager screenManager) {
 			watcher.OnGameEnded += OnGameEnded;

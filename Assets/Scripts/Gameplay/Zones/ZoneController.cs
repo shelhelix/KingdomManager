@@ -7,7 +7,7 @@ namespace GameJamEntry.Gameplay.Zones {
 		Dictionary<string, ZoneState> _zones = new();
 
 		public List<string> ZonesIds => _zones.Keys.ToList();
-		
+
 		public int RebelZonesCount => _zones.Count(z => z.Value.CurrentMana <= 0);
 		public int TotalZonesCount => _zones.Count;
 
@@ -40,22 +40,9 @@ namespace GameJamEntry.Gameplay.Zones {
 		public void OnTurnEnded() {
 			foreach ( var zone in _zones ) {
 				zone.Value.CurrentMana           = Mathf.Max(zone.Value.CurrentMana - CalcZoneConsumption(zone.Key), 0);
-				zone.Value.LeftTurnsInFight      = Mathf.Max(zone.Value.LeftTurnsInFight-1, 0);
-				zone.Value.LeftTurnsWithBlessing = Mathf.Max(zone.Value.LeftTurnsWithBlessing-1, 0);
+				zone.Value.LeftTurnsInFight      = Mathf.Max(zone.Value.LeftTurnsInFight - 1, 0);
+				zone.Value.LeftTurnsWithBlessing = Mathf.Max(zone.Value.LeftTurnsWithBlessing - 1, 0);
 			}
-		}
-
-		int CalcZoneConsumption(string zoneId) {
-			if ( !_zones.ContainsKey(zoneId) ) {
-				Debug.LogError($"Zone {zoneId} not found");
-				return 0;
-			}
-			var zone              = _zones[zoneId];
-			var zoneParams        = zone.ZoneParams;
-			var needToConsumeMana = zoneParams.ZoneDefaultManaConsumption;
-			needToConsumeMana += zone.LeftTurnsInFight > 0 ? zoneParams.FightManaConsumption : 0;
-			needToConsumeMana -= zone.LeftTurnsWithBlessing > 0 ? zoneParams.BlessingManaConsumption : 0;
-			return needToConsumeMana;
 		}
 
 		public List<string> GetZonesWithoutFight() {
@@ -72,6 +59,19 @@ namespace GameJamEntry.Gameplay.Zones {
 				return;
 			}
 			_zones[zoneId].CurrentMana += manaAmount;
+		}
+
+		int CalcZoneConsumption(string zoneId) {
+			if ( !_zones.ContainsKey(zoneId) ) {
+				Debug.LogError($"Zone {zoneId} not found");
+				return 0;
+			}
+			var zone              = _zones[zoneId];
+			var zoneParams        = zone.ZoneParams;
+			var needToConsumeMana = zoneParams.ZoneDefaultManaConsumption;
+			needToConsumeMana += zone.LeftTurnsInFight > 0 ? zoneParams.FightManaConsumption : 0;
+			needToConsumeMana -= zone.LeftTurnsWithBlessing > 0 ? zoneParams.BlessingManaConsumption : 0;
+			return needToConsumeMana;
 		}
 	}
 }

@@ -16,23 +16,23 @@ namespace GameJamEntry.Gameplay {
 		[NotNullReference] [SerializeField] EncounterConfig    EncounterConfig;
 		[NotNullReference] [SerializeField] ScreenManager      ScreenManager;
 		[NotNullReference] [SerializeField] ManaTransferWindow ManaTransferWindow;
-		
+
 		protected override void Configure(IContainerBuilder builder) {
 			base.Configure(builder);
 			builder.RegisterInstance(EncounterConfig);
 			builder.RegisterInstance(Zones);
 			builder.RegisterInstance(ScreenManager);
 			builder.RegisterInstance(ManaTransferWindow);
-			
+
 			builder.Register<ManaManager>(Lifetime.Scoped);
 			builder.Register<ManaIncomer>(Lifetime.Scoped);
 			builder.Register<ZoneController>(Lifetime.Scoped);
 			builder.Register<RandomZoneEncounter>(Lifetime.Scoped);
 			builder.Register<TurnManager>(Lifetime.Scoped);
 			builder.Register<GameplayGoalWatcher>(Lifetime.Scoped);
-			
+
 			builder.RegisterInstance(new SceneLoader(FadeSceneTransition.Instance));
-			
+
 			builder.RegisterEntryPoint<GameplayStarter>();
 		}
 	}

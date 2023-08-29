@@ -8,7 +8,7 @@ using VContainer;
 namespace GameJamEntry.Gameplay.UI {
 	public class ReturnToMenuButton : MonoBehaviour {
 		[NotNullReference] [SerializeField] Button Button;
-		
+
 		[Inject]
 		public void Init(SceneLoader sceneLoader) {
 			Button.onClick.AddListener(() => sceneLoader.LoadScene("MainMenu").Forget());

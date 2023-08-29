@@ -9,7 +9,7 @@ namespace GameJamEntry.MainMenu.UI.Settings {
 
 		SystemSettingsController _controller;
 		MixerParamName           _mixerParamName;
-		
+
 		public void Init(SystemSettingsController settingsController, MixerParamName paramName) {
 			_mixerParamName = paramName;
 			_controller     = settingsController;
@@ -19,7 +19,7 @@ namespace GameJamEntry.MainMenu.UI.Settings {
 		}
 
 		void OnSliderValueChanged(float value) {
-			_controller.SetNormalizedVolume(_mixerParamName, value);	
+			_controller.SetNormalizedVolume(_mixerParamName, value);
 		}
 	}
 }

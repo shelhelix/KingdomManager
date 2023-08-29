@@ -9,7 +9,7 @@ namespace GameJamEntry.MainMenu {
 		[NotNullReference] [SerializeField] AudioMixer Mixer;
 
 		SystemSettingsController _systemSettingsController;
-		
+
 		public void Init(SystemSettingsController settingsController) {
 			_systemSettingsController                     =  settingsController;
 			_systemSettingsController.OnSoundParamChanged += OnSoundParamChanged;
@@ -26,7 +26,7 @@ namespace GameJamEntry.MainMenu {
 		void OnSoundParamChanged((MixerParamName name, float value) paramChanged) {
 			UpdateValues();
 		}
-		
+
 		void UpdateValues() {
 			foreach ( MixerParamName mixerParam in Enum.GetValues(typeof(MixerParamName)) ) {
 				var normalizedVolume = _systemSettingsController.GetNormalizedVolume(mixerParam);

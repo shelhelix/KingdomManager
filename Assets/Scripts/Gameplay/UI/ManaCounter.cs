@@ -6,7 +6,7 @@ using VContainer;
 namespace GameJamEntry.Gameplay.UI {
 	public class ManaCounter : MonoBehaviour {
 		[NotNullReference] [SerializeField] TMP_Text CounterText;
-		
+
 		[Inject]
 		public void Init(ManaManager manaManager) {
 			manaManager.CurrentMana.OnValueChanged += OnManaChanged;

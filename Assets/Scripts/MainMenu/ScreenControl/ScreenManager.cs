@@ -9,14 +9,12 @@ namespace GameJamEntry.MainMenu.ScreenControl {
 		[NotNullReference] [SerializeField] List<BaseScreen> Screens;
 
 		bool _inTransit;
-		
+
 		public void Init() {
 			Screens.ForEach(FirstInit);
 		}
 
-		public void Deinit() {
-			
-		}
+		public void Deinit() {}
 
 		public async UniTaskVoid ShowScreen<T>(Action<T> initAction = null) where T : BaseScreen {
 			if ( _inTransit ) {

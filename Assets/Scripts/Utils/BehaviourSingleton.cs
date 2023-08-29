@@ -5,7 +5,7 @@ namespace GameJamEntry.Utils {
 		static T _instance;
 
 		public static bool HasInstance => _instance;
-		
+
 		public static T Instance {
 			get {
 				if ( _instance ) {

@@ -14,7 +14,7 @@ namespace GameJamEntry.MainMenu.UI {
 			_systemSettingsController = settingsController;
 			_sceneLoader              = sceneLoader;
 		}
-		
+
 		public void ShowMainMenuScreen() {
 			_screenManager.ShowScreen<MainMenuScreen>(x => x.Init(this, _sceneLoader)).Forget();
 		}

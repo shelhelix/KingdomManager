@@ -21,7 +21,7 @@ namespace GameJamEntry.Gameplay {
 			_manaTransferWindow = manaTransferWindow;
 			_manaManager        = manaManager;
 		}
-		
+
 		public void Start() {
 			_screenManager.Init();
 			foreach ( var zoneView in _zoneViews ) {

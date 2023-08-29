@@ -5,7 +5,7 @@
 		public int    LeftTurnsWithBlessing;
 
 		public int CurrentMana;
-		
+
 		public ZoneParams ZoneParams;
 
 		public ZoneState(string id, ZoneParams zoneParams) {

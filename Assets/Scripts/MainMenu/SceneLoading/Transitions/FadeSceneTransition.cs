@@ -11,8 +11,8 @@ namespace GameJamEntry.MainMenu.SceneLoading.Transitions {
 
 		protected void Start() {
 			Canvas.gameObject.SetActive(false);
-			Canvas.worldCamera = CameraUtility.Instance.Camera;
-			CanvasGroup.alpha  = 0;
+			Canvas.worldCamera                     =  CameraUtility.Instance.Camera;
+			CanvasGroup.alpha                      =  0;
 			CameraUtility.Instance.OnCameraChanged += OnCameraChanged;
 		}
 

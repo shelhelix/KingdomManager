@@ -6,26 +6,36 @@ using UnityEngine.EventSystems;
 using VContainer;
 
 namespace GameJamEntry.Gameplay.Zones {
-	
 	public class ZoneView : MonoBehaviour, IPointerClickHandler {
 		public int GoodManaAmount = 10;
 
 		[NotNullReference] [SerializeField] string     ZoneId;
-		[NotNullReference][SerializeField]  ZoneParams ZoneParams;
+		[NotNullReference] [SerializeField] ZoneParams ZoneParams;
 
 		[NotNullReference] [SerializeField] SpriteRenderer BlessingIcon;
 		[NotNullReference] [SerializeField] SpriteRenderer FightIcon;
 		[NotNullReference] [SerializeField] SpriteRenderer BaseTile;
- 		[NotNullReference] [SerializeField] TMP_Text       ManaText;
-		
+		[NotNullReference] [SerializeField] TMP_Text       ManaText;
+		ManaManager                                        _manaManager;
+		ManaTransferWindow                                 _manaTransferWindow;
+
+		TurnManager    _turnManager;
+		ZoneController _zoneController;
+
 		public ZoneParams Params => ZoneParams;
 		public string     Id     => ZoneId;
 
-		TurnManager        _turnManager;
-		ZoneController     _zoneController;
-		ManaTransferWindow _manaTransferWindow;
-		ManaManager        _manaManager;
-		
+		protected void OnDisable() {
+			if ( _turnManager == null ) {
+				return;
+			}
+			_turnManager.OnTurnEnded -= OnTurnEnded;
+		}
+
+		public void OnPointerClick(PointerEventData eventData) {
+			_manaTransferWindow.Show(Id);
+		}
+
 		[Inject]
 		public void Init(TurnManager turnManager, ZoneController zoneController, ManaTransferWindow manaTransferWindow, ManaManager manaManager) {
 			turnManager.OnTurnEnded                += OnTurnEnded;
@@ -34,22 +44,11 @@ namespace GameJamEntry.Gameplay.Zones {
 			_manaTransferWindow                    =  manaTransferWindow;
 			_manaManager                           =  manaManager;
 			_turnManager                           =  turnManager;
-
+			RefreshView();
 		}
 
 		void OnManaChanged(int newManaAmount) {
 			RefreshView();
-		}
-
-		protected void Start() {
-			RefreshView();
-		}
-
-		protected void OnDisable() {
-			if ( _turnManager == null ) {
-				return;
-			}
-			_turnManager.OnTurnEnded -= OnTurnEnded;
 		}
 
 		void OnTurnEnded(int newTurnIndex) {
@@ -65,13 +64,9 @@ namespace GameJamEntry.Gameplay.Zones {
 			BlessingIcon.enabled = zoneState.LeftTurnsWithBlessing > 0;
 			FightIcon.enabled    = zoneState.LeftTurnsInFight > 0;
 			ManaText.text        = zoneState.CurrentMana.ToString();
-			
+
 			var tValue = zoneState.CurrentMana / (float)GoodManaAmount;
 			BaseTile.color = Color.Lerp(Color.red, Color.green, tValue);
-		}
-
-		public void OnPointerClick(PointerEventData eventData) {
-			_manaTransferWindow.Show(Id);
 		}
 	}
 }

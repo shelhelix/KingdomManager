@@ -2,6 +2,8 @@
 
 namespace GameJamEntry.Utils {
 	public class ReactiveValue<T> {
+		T _value;
+
 		public T Value {
 			get => _value;
 			set {
@@ -9,8 +11,6 @@ namespace GameJamEntry.Utils {
 				OnValueChanged?.Invoke(value);
 			}
 		}
-
-		T _value;
 
 		public event Action<T> OnValueChanged;
 	}
