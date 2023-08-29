@@ -1,5 +1,4 @@
-﻿using System;
-using Com.Shelinc.FullscreenCanvasController;
+﻿using Com.Shelinc.FullscreenCanvasController;
 using GameComponentAttributes.Attributes;
 using GameJamEntry.General;
 using GameJamEntry.Utils.UI;

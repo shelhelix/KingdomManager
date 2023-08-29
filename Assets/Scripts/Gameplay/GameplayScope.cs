@@ -32,8 +32,6 @@ namespace GameJamEntry.Gameplay {
 			builder.Register<GameplayGoalWatcher>(Lifetime.Scoped);
 
 			builder.RegisterInstance(new SceneLoader(FadeSceneTransition.Instance));
-
-			builder.RegisterEntryPoint<GameplayStarter>();
 		}
 	}
 }
